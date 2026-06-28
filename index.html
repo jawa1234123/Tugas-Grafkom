@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisasi Grafika Komputer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar glass">
+            <h2>Grafkom Final</h2>
+            <nav>
+                <button class="nav-btn active" data-target="clipping">
+                    <span class="btn-text">D. Clipping (Liang-Barsky)</span>
+                </button>
+                <button class="nav-btn" data-target="bresenham">
+                    <span class="btn-text">A. Linear (Bresenham)</span>
+                </button>
+                <button class="nav-btn" data-target="transformasi">
+                    <span class="btn-text">B. Transformasi (2D)</span>
+                </button>
+            </nav>
+            <div class="group-info">
+                <h3>Kelompok:</h3>
+                <p>1. Nama Anggota 1</p>
+                <p>2. Nama Anggota 2</p>
+                <p>3. Nama Anggota 3</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header>
+                <h1 id="page-title">Algoritma Clipping Liang-Barsky</h1>
+                <p id="page-desc">Implementasi presisi algoritma pemotongan garis terhadap window boundaries.</p>
+            </header>
+
+            <div class="workspace">
+                <div class="panel glass input-panel">
+                    <h3>Parameter Input</h3>
+                    
+                    <!-- Clipping Inputs -->
+                    <div id="input-clipping" class="input-section active">
+                        <div class="input-group">
+                            <label>Window Min (Xmin, Ymin)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="c-xmin" value="2">
+                                <input type="number" id="c-ymin" value="2">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Window Max (Xmax, Ymax)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="c-xmax" value="12">
+                                <input type="number" id="c-ymax" value="10">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Garis Awal (X0, Y0)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="c-x0" value="-3">
+                                <input type="number" id="c-y0" value="0">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Garis Akhir (X1, Y1)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="c-x1" value="15">
+                                <input type="number" id="c-y1" value="12">
+                            </div>
+                        </div>
+                        <button id="btn-calc-clipping" class="action-btn">Proses Visualisasi</button>
+                    </div>
+
+                    <!-- Bresenham Inputs -->
+                    <div id="input-bresenham" class="input-section">
+                        <div class="input-group">
+                            <label>Titik Awal P0 (X0, Y0)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="b-x0" value="-8">
+                                <input type="number" id="b-y0" value="-5">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Titik Akhir P1 (X1, Y1)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="b-x1" value="8">
+                                <input type="number" id="b-y1" value="6">
+                            </div>
+                        </div>
+                        <button id="btn-calc-bresenham" class="action-btn">Proses Visualisasi</button>
+                    </div>
+
+                    <!-- Transformasi Inputs -->
+                    <div id="input-transformasi" class="input-section">
+                        <div class="input-group">
+                            <label>Koordinat Poligon (x,y per baris)</label>
+                            <textarea id="t-points" rows="4">0,0
+4,0
+4,4
+0,4</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Translasi (Tx, Ty)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="t-tx" value="2">
+                                <input type="number" id="t-ty" value="3">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Scaling (Sx, Sy)</label>
+                            <div class="coord-inputs">
+                                <input type="number" id="t-sx" value="1.5">
+                                <input type="number" id="t-sy" value="1.5">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Rotasi (Derajat θ)</label>
+                            <input type="number" id="t-rot" value="30">
+                        </div>
+                        <button id="btn-calc-transformasi" class="action-btn">Proses Visualisasi</button>
+                    </div>
+                </div>
+
+                <div class="panel glass canvas-panel">
+                    <h3>Viewport Render</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="main-canvas" width="600" height="450"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel glass output-panel">
+                <h3>Log Eksekusi Algoritma</h3>
+                <pre id="output-log">Sistem siap. Silakan pilih menu dan masukkan parameter.</pre>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
